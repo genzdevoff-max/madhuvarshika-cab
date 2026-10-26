@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Madhuvarshika Cab Service">
+  <rect width="64" height="64" rx="14" fill="#071b43"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="11" fill="none" stroke="#ffd329" stroke-width="2"/>
+  <path d="M16 44V22l10 14 10-14v22" fill="none" stroke="#ffd329" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 22l7 22 7-22" fill="none" stroke="#ffd329" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

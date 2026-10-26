@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Illustration of a taxi on a night road</title>
+  <desc id="heroDesc">A stylised yellow taxi driving through a city at night. This is an illustration, not a photo of the business vehicle.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#103a80"/>
+      <stop offset=".55" stop-color="#0a2a62"/>
+      <stop offset="1" stop-color="#061638"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a2350"/>
+      <stop offset="1" stop-color="#04112a"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe473"/>
+      <stop offset="1" stop-color="#f2c200"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9c9ff"/>
+      <stop offset="1" stop-color="#24518f"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ffd329" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#ffd329" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="headlight">
+      <stop offset="0" stop-color="#fff6c9" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#fff6c9" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="frame">
+      <rect width="640" height="480" rx="28"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="640" height="480" fill="url(#sky)"/>
+    <circle cx="500" cy="104" r="150" fill="url(#glow)"/>
+    <circle cx="500" cy="104" r="38" fill="#ffd329" opacity=".92"/>
+    <circle cx="500" cy="104" r="58" fill="none" stroke="#ffd329" stroke-opacity=".22" stroke-width="1.5"/>
+    <circle cx="500" cy="104" r="82" fill="none" stroke="#ffd329" stroke-opacity=".12" stroke-width="1.5"/>
+    <g fill="#123a75" opacity=".75">
+      <rect x="22" y="238" width="58" height="110" rx="4"/>
+      <rect x="88" y="204" width="42" height="144" rx="4"/>
+      <rect x="138" y="256" width="70" height="92" rx="4"/>
+      <rect x="216" y="220" width="36" height="128" rx="4"/>
+      <rect x="260" y="268" width="54" height="80" rx="4"/>
+      <rect x="322" y="214" width="48" height="134" rx="4"/>
+      <rect x="378" y="250" width="34" height="98" rx="4"/>
+      <rect x="420" y="232" width="62" height="116" rx="4"/>
+      <rect x="490" y="270" width="40" height="78" rx="4"/>
+      <rect x="538" y="228" width="72" height="120" rx="4"/>
+    </g>
+    <g fill="#ffd329" opacity=".65">
+      <rect x="34" y="254" width="8" height="8" rx="1"/>
+      <rect x="52" y="254" width="8" height="8" rx="1"/>
+      <rect x="34" y="272" width="8" height="8" rx="1"/>
+      <rect x="98" y="220" width="7" height="7" rx="1"/>
+      <rect x="112" y="220" width="7" height="7" rx="1"/>
+      <rect x="98" y="238" width="7" height="7" rx="1"/>
+      <rect x="152" y="272" width="8" height="8" rx="1"/>
+      <rect x="174" y="272" width="8" height="8" rx="1"/>
+      <rect x="152" y="292" width="8" height="8" rx="1"/>
+      <rect x="334" y="232" width="7" height="7" rx="1"/>
+      <rect x="350" y="232" width="7" height="7" rx="1"/>
+      <rect x="334" y="250" width="7" height="7" rx="1"/>
+      <rect x="436" y="250" width="8" height="8" rx="1"/>
+      <rect x="456" y="250" width="8" height="8" rx="1"/>
+      <rect x="436" y="270" width="8" height="8" rx="1"/>
+      <rect x="552" y="246" width="8" height="8" rx="1"/>
+      <rect x="572" y="246" width="8" height="8" rx="1"/>
+      <rect x="552" y="266" width="8" height="8" rx="1"/>
+    </g>
+    <rect y="332" width="640" height="148" fill="url(#road)"/>
+    <rect y="332" width="640" height="2" fill="#2a5aa0" opacity=".6"/>
+    <g fill="#ffd329" opacity=".9">
+      <rect x="24" y="378" width="86" height="7" rx="3.5"/>
+      <rect x="146" y="378" width="86" height="7" rx="3.5"/>
+      <rect x="268" y="378" width="86" height="7" rx="3.5"/>
+      <rect x="390" y="378" width="86" height="7" rx="3.5"/>
+      <rect x="512" y="378" width="104" height="7" rx="3.5"/>
+    </g>
+    <ellipse cx="318" cy="394" rx="214" ry="16" fill="#000" opacity=".38"/>
+    <g transform="translate(98 218)">
+      <ellipse cx="226" cy="176" rx="210" ry="12" fill="#000" opacity=".22"/>
+      <path d="M42 150l10-37c3-12 12-20 24-23l58-9 43-36c10-8 21-13 34-13h91c16 0 31 6 42 18l42 46 51 8c20 3 34 20 34 40v8c0 8-6 14-14 14H56c-10 0-18-8-16-16z" fill="url(#body)"/>
+      <path d="M178 45h57c7 0 13 2 18 7l31 33H178z" fill="url(#glass)" opacity=".9"/>
+      <path d="M247 45h55c8 0 15 3 20 9l30 31H247z" fill="url(#glass)" opacity=".9"/>
+      <path d="M181 49h49v32h-48z" fill="#fff" opacity=".12"/>
+      <path d="M28 118h394" stroke="#071b43" stroke-opacity=".16" stroke-width="3"/>
+      <rect x="252" y="88" width="24" height="5" rx="2.5" fill="#071b43" opacity=".55"/>
+      <rect x="319" y="88" width="24" height="5" rx="2.5" fill="#071b43" opacity=".55"/>
+      <circle cx="126" cy="168" r="32" fill="#081631"/>
+      <circle cx="126" cy="168" r="18" fill="#c9d6ef"/>
+      <circle cx="126" cy="168" r="7" fill="#071b43"/>
+      <circle cx="376" cy="168" r="32" fill="#081631"/>
+      <circle cx="376" cy="168" r="18" fill="#c9d6ef"/>
+      <circle cx="376" cy="168" r="7" fill="#071b43"/>
+      <path d="M432 96c10 0 18 7 20 16h-28c-1-9 3-16 8-16z" fill="#fff6c9"/>
+      <ellipse cx="486" cy="106" rx="58" ry="34" fill="url(#headlight)"/>
+      <g fill="#071b43">
+        <rect x="66" y="108" width="20" height="13" rx="3"/>
+        <rect x="90" y="108" width="20" height="13" rx="3"/>
+        <rect x="114" y="108" width="20" height="13" rx="3"/>
+        <rect x="138" y="108" width="20" height="13" rx="3"/>
+        <rect x="162" y="108" width="20" height="13" rx="3"/>
+      </g>
+      <g fill="#f2c200">
+        <rect x="76" y="112" width="8" height="5" rx="1"/>
+        <rect x="100" y="112" width="8" height="5" rx="1"/>
+        <rect x="124" y="112" width="8" height="5" rx="1"/>
+        <rect x="148" y="112" width="8" height="5" rx="1"/>
+      </g>
+      <rect x="300" y="18" width="88" height="20" rx="6" fill="#ffd329" stroke="#071b43" stroke-width="3"/>
+      <path d="M324 28h40" stroke="#071b43" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g fill="#ffd329" opacity=".5">
+      <rect x="12" y="360" width="46" height="4" rx="2"/>
+      <rect x="4" y="372" width="30" height="4" rx="2"/>
+    </g>
+    <rect x="12.5" y="12.5" width="615" height="455" rx="24" fill="none" stroke="#ffffff" stroke-opacity=".18" stroke-width="1.5"/>
+  </g>
+</svg>
