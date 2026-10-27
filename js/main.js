@@ -345,11 +345,13 @@
   var bookingModal = document.getElementById("bookingModal");
   var modalCloseBtn = document.getElementById("modalCloseBtn");
   var lastFocusedElement = null;
+  var modalOpenedAt = 0;
 
   function openBookingModal(options) {
     if (!bookingModal) {
       return;
     }
+    modalOpenedAt = Date.now();
     lastFocusedElement = document.activeElement;
     var vehicle = null;
     var trip = null;
@@ -384,6 +386,9 @@
     }
   }
 
+  // Expose globally so external triggers or debug callers can invoke it cleanly
+  window.openBookingModal = openBookingModal;
+
   function closeBookingModal() {
     if (!bookingModal) {
       return;
@@ -401,11 +406,18 @@
   }
 
   if (modalCloseBtn) {
-    modalCloseBtn.addEventListener("click", closeBookingModal);
+    modalCloseBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      closeBookingModal();
+    });
   }
 
   if (bookingModal) {
     bookingModal.addEventListener("click", function (event) {
+      // Prevent mobile touchscreen tap ghost-clicks from immediately closing the modal
+      if (Date.now() - modalOpenedAt < 350) {
+        return;
+      }
       if (event.target === bookingModal) {
         closeBookingModal();
       }
@@ -465,12 +477,13 @@
   // Clicking "Book a Taxi Now" in #contact opens the modal
   var openBookingFormBtn = document.getElementById("openBookingFormBtn");
   if (openBookingFormBtn) {
-    openBookingFormBtn.addEventListener("click", function () {
+    openBookingFormBtn.addEventListener("click", function (event) {
+      event.preventDefault();
       openBookingModal();
     });
   }
 
-  // Header and Hero booking CTAs open the modal
+  // Header, Hero, and Why-us booking CTAs open the modal
   document.querySelectorAll('.nav-cta, .hero-actions a[href="#contact"], .why-panel a[href="#contact"]').forEach(function (link) {
     link.addEventListener("click", function (event) {
       event.preventDefault();
