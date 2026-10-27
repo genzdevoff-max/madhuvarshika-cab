@@ -994,6 +994,7 @@ button {
   line-height: 1.2;
 }
 
+.fleet-visual img,
 .fleet-img {
   max-width: 100%;
   max-height: 100%;
