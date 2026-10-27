@@ -18,7 +18,11 @@ The visual direction was informed by a reference taxi website, but the layout, s
 │   ├── favicon.svg             Primary favicon
 │   ├── favicon-32.png          PNG favicon fallback
 │   ├── apple-touch-icon.png    Apple touch icon
-│   └── hero-cab.svg            Original hero illustration (not a client photo)
+│   ├── hero-cab.svg            Original hero illustration (not a client photo)
+│   ├── Maruti Suzuki Swift.jpg White Maruti Suzuki Swift hatchback photo
+│   ├── Maruti Suzuki Dzire.jpg White Maruti Suzuki Dzire sedan photo
+│   ├── Toyota Innova.webp      White Toyota Innova Crysta photo
+│   └── Traveller.png           White Force Tempo Traveller minibus photo
 ├── robots.txt                  Allows crawlers; sitemap pending a confirmed domain
 ├── vercel.json                 Clean URLs, security headers and asset caching
 ├── .vercelignore               Keeps the README and Phase 1 audit out of deployments
@@ -38,12 +42,13 @@ Then visit `http://localhost:8000/`. Google Fonts require an internet connection
 
 ## Booking flow
 
-The form collects name, phone, pickup, destination, travel date, return date (round trips only), pickup time, trip type, passengers and optional notes.
+The form collects name, phone, pickup, destination, travel date, return date (round trips only), pickup time, trip type, preferred vehicle (optional), passengers and optional notes.
 
 - Required fields, Indian mobile number format and past travel dates are validated in the browser.
 - Return dates are required for round trips and cannot be earlier than the travel date.
-- Tariff buttons pre-select `One-way trip`, `Round trip` or `One-day trip`.
-- A readable WhatsApp message is built from the entered details, URL-encoded and opened in a new tab.
+- Vehicle cards pre-select `Maruti Suzuki Swift`, `Maruti Suzuki Dzire`, `Toyota Innova Crysta` or `Force Tempo Traveller`.
+- No fixed package or tariff tables are published on the website; all fare details and availability are communicated directly in WhatsApp chat.
+- A readable WhatsApp message is built from the entered details, URL-encoded and opened in WhatsApp chat.
 - Submitting again is blocked for 2.5 seconds, and the page shows a fallback link if the popup does not open.
 - The page states clearly that a booking is confirmed only after the business replies.
 - The submit button stays disabled if JavaScript is unavailable, and a call fallback is shown.

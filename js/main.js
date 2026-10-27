@@ -157,6 +157,7 @@
   var returnDateInput = document.getElementById("returnDate");
   var returnField = document.getElementById("returnField");
   var tripSelect = document.getElementById("trip");
+  var vehicleSelect = document.getElementById("vehicle");
   var passengersSelect = document.getElementById("passengers");
   var timeInput = document.getElementById("time");
   var notesInput = document.getElementById("notes");
@@ -238,16 +239,19 @@
       return;
     }
     formStatus.className = "form-status is-" + type;
-    formStatus.textContent = message;
+    formStatus.innerHTML = "";
+    var p = document.createElement("p");
+    p.textContent = message;
+    formStatus.appendChild(p);
+
     if (fallbackUrl) {
-      formStatus.appendChild(document.createTextNode(" "));
-      var link = document.createElement("a");
-      link.href = fallbackUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = "Open the WhatsApp message";
-      formStatus.appendChild(link);
-      formStatus.appendChild(document.createTextNode("."));
+      var btn = document.createElement("a");
+      btn.href = fallbackUrl;
+      btn.target = "_blank";
+      btn.rel = "noopener noreferrer";
+      btn.className = "btn btn--sm";
+      btn.textContent = "Open WhatsApp Chat";
+      formStatus.appendChild(btn);
     }
   }
 
@@ -313,7 +317,7 @@
     return firstInvalid;
   }
 
-  var controls = [nameInput, phoneInput, pickupInput, dropInput, dateInput, returnDateInput, tripSelect, passengersSelect, timeInput, notesInput].filter(Boolean);
+  var controls = [nameInput, phoneInput, pickupInput, dropInput, dateInput, returnDateInput, tripSelect, vehicleSelect, passengersSelect, timeInput, notesInput].filter(Boolean);
   controls.forEach(function (control) {
     control.addEventListener("input", function () {
       clearFieldError(control);
@@ -350,6 +354,17 @@
     });
   });
 
+  document.querySelectorAll("[data-vehicle]").forEach(function (link) {
+    link.addEventListener("click", function () {
+      if (!vehicleSelect) {
+        return;
+      }
+      vehicleSelect.value = link.getAttribute("data-vehicle");
+      clearFieldError(vehicleSelect);
+      clearStatus();
+    });
+  });
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     if (submitLocked) {
@@ -380,11 +395,18 @@
 
     lines.push(
       "Pickup time: " + (timeInput.value || "Not specified"),
-      "Trip type: " + tripSelect.value,
+      "Trip type: " + tripSelect.value
+    );
+
+    if (vehicleSelect && vehicleSelect.value) {
+      lines.push("Vehicle: " + vehicleSelect.value);
+    }
+
+    lines.push(
       "Passengers: " + passengersSelect.value,
       "Additional details: " + (notesInput.value.trim() || "None"),
       "",
-      "Please confirm availability and the final fare."
+      "Please confirm availability, vehicle and fare details."
     );
 
     var url = waUrl(lines.join("\n"));
@@ -395,17 +417,19 @@
       submitBtn.classList.add("is-busy");
     }
 
-    var opener = document.createElement("a");
-    opener.href = url;
-    opener.target = "_blank";
-    opener.rel = "noopener noreferrer";
-    document.body.appendChild(opener);
-    opener.click();
-    opener.remove();
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.innerWidth <= 768);
+    if (isMobile) {
+      window.location.href = url;
+    } else {
+      var win = window.open(url, "_blank");
+      if (!win || win.closed || typeof win.closed === "undefined") {
+        window.location.href = url;
+      }
+    }
 
     showStatus(
       "info",
-      "WhatsApp should open in a new tab with your trip details. If it did not open, use the link below, or check that pop-ups are allowed for this site. Your booking is confirmed only after the business replies.",
+      "Opening WhatsApp chat with your filled details... If it did not open automatically, tap below:",
       url
     );
 
