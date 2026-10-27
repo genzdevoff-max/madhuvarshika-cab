@@ -346,25 +346,42 @@
   var modalCloseBtn = document.getElementById("modalCloseBtn");
   var lastFocusedElement = null;
 
-  function openBookingModal(vehicleName) {
+  function openBookingModal(options) {
     if (!bookingModal) {
       return;
     }
     lastFocusedElement = document.activeElement;
-    if (vehicleName && vehicleSelect) {
-      vehicleSelect.value = vehicleName;
+    var vehicle = null;
+    var trip = null;
+    if (typeof options === "string") {
+      vehicle = options;
+    } else if (options && typeof options === "object") {
+      vehicle = options.vehicle;
+      trip = options.trip;
+    }
+
+    if (vehicle && vehicleSelect) {
+      vehicleSelect.value = vehicle;
       clearFieldError(vehicleSelect);
     }
+    if (trip && tripSelect) {
+      tripSelect.value = trip;
+      syncReturnField();
+      clearFieldError(tripSelect);
+    }
     clearStatus();
+
+    bookingModal.removeAttribute("hidden");
     bookingModal.hidden = false;
-    window.requestAnimationFrame(function () {
-      bookingModal.classList.add("is-active");
-      bookingModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("modal-open");
-      if (nameInput) {
-        nameInput.focus();
-      }
-    });
+    void bookingModal.offsetHeight;
+    bookingModal.classList.add("is-active");
+    bookingModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    // Avoid automatically popping up mobile virtual keyboard on touch screens
+    if (window.innerWidth > 640 && nameInput) {
+      nameInput.focus();
+    }
   }
 
   function closeBookingModal() {
@@ -376,6 +393,7 @@
     document.body.classList.remove("modal-open");
     window.setTimeout(function () {
       bookingModal.hidden = true;
+      bookingModal.setAttribute("hidden", "");
       if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
       }
@@ -405,9 +423,44 @@
     link.addEventListener("click", function (event) {
       event.preventDefault();
       var vehicle = link.getAttribute("data-vehicle");
-      openBookingModal(vehicle);
+      openBookingModal({ vehicle: vehicle });
     });
   });
+
+  // Clicking "Taxi services for every journey" cards opens the modal with the preselected trip type
+  document.querySelectorAll(".service-card, [data-trip]").forEach(function (el) {
+    el.addEventListener("click", function (event) {
+      var trip = el.getAttribute("data-trip");
+      if (!trip) {
+        var childWithTrip = el.querySelector("[data-trip]");
+        if (childWithTrip) {
+          trip = childWithTrip.getAttribute("data-trip");
+        }
+      }
+      if (trip) {
+        event.preventDefault();
+        event.stopPropagation();
+        openBookingModal({ trip: trip });
+      }
+    });
+  });
+
+  // Mobile bar and floating action WhatsApp buttons open the modal
+  var mobileWa = document.getElementById("mobileWa");
+  if (mobileWa) {
+    mobileWa.addEventListener("click", function (event) {
+      event.preventDefault();
+      openBookingModal();
+    });
+  }
+
+  var floatingWa = document.getElementById("floatingWa");
+  if (floatingWa) {
+    floatingWa.addEventListener("click", function (event) {
+      event.preventDefault();
+      openBookingModal();
+    });
+  }
 
   // Clicking "Book a Taxi Now" in #contact opens the modal
   var openBookingFormBtn = document.getElementById("openBookingFormBtn");
@@ -437,18 +490,6 @@
         }
       }
     }
-  });
-
-  document.querySelectorAll("[data-trip]").forEach(function (link) {
-    link.addEventListener("click", function () {
-      if (!tripSelect) {
-        return;
-      }
-      tripSelect.value = link.getAttribute("data-trip");
-      syncReturnField();
-      clearFieldError(tripSelect);
-      clearStatus();
-    });
   });
 
   form.addEventListener("submit", function (event) {
