@@ -159,14 +159,14 @@
         </div>
         <div class="hero-visual">
           <div class="hero-card">
-            <img src="assets/hero-cab.svg" width="640" height="480" alt="Stylised illustration of a yellow taxi driving on a city road at night" fetchpriority="high" decoding="async" />
+            <img src="assets/hero-cab.jpg" width="1376" height="768" alt="White premium taxi cab at airport terminal ready for pickup" fetchpriority="high" decoding="async" />
             <div class="rating-chip">
               <span class="stars" aria-hidden="true">★★★★★</span>
               <strong>4.9 / 5</strong>
               <span>reported on Google</span>
             </div>
           </div>
-          <p class="media-note">Illustrative artwork, not a photo of the business vehicle. Vehicle availability and fare are confirmed directly on WhatsApp.</p>
+          <p class="media-note">24/7 airport transfers, outstation journeys and local taxi service from Samalapuram, Tiruppur.</p>
         </div>
       </div>
     </section>
@@ -369,91 +369,13 @@
               <span><strong>Open in Google Maps</strong><small>Find our location &amp; get directions</small></span>
             </a>
           </div>
-          <form class="booking-form" id="bookingForm" novalidate>
-            <div class="form-head">
-              <h3>Request a taxi</h3>
-              <p>Enter your details to prepare a WhatsApp message. Nothing is stored on this website.</p>
-            </div>
-            <div class="form-grid">
-              <div class="field">
-                <label for="name">Your name</label>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your name" required aria-describedby="nameError" />
-                <p class="field-error" id="nameError"></p>
-              </div>
-              <div class="field">
-                <label for="phone">Your phone number</label>
-                <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile number" required aria-describedby="phoneError" />
-                <p class="field-error" id="phoneError"></p>
-              </div>
-              <div class="field field--full">
-                <label for="pickup">Pickup location</label>
-                <input id="pickup" name="pickup" type="text" autocomplete="off" placeholder="Where should we pick you up?" required aria-describedby="pickupError" />
-                <p class="field-error" id="pickupError"></p>
-              </div>
-              <div class="field field--full">
-                <label for="drop">Destination</label>
-                <input id="drop" name="drop" type="text" autocomplete="off" placeholder="Where are you going?" required aria-describedby="dropError" />
-                <p class="field-error" id="dropError"></p>
-              </div>
-              <div class="field">
-                <label for="date">Travel date</label>
-                <input id="date" name="date" type="date" required aria-describedby="dateError" />
-                <p class="field-error" id="dateError"></p>
-              </div>
-              <div class="field" id="returnField" hidden>
-                <label for="returnDate">Return date</label>
-                <input id="returnDate" name="returnDate" type="date" aria-describedby="returnDateError" />
-                <p class="field-error" id="returnDateError"></p>
-              </div>
-              <div class="field">
-                <label for="trip">Trip type</label>
-                <select id="trip" name="trip" required aria-describedby="tripError">
-                  <option value="">Choose trip type</option>
-                  <option>Local trip</option>
-                  <option>Outstation trip</option>
-                  <option>One-way trip</option>
-                  <option>Round trip</option>
-                  <option>Airport transfer</option>
-                  <option>One-day trip</option>
-                  <option>Family / group trip</option>
-                </select>
-                <p class="field-error" id="tripError"></p>
-              </div>
-              <div class="field">
-                <label for="vehicle">Preferred vehicle <span class="label-note">(optional)</span></label>
-                <select id="vehicle" name="vehicle">
-                  <option value="">Choose vehicle (optional)</option>
-                  <option value="Maruti Suzuki Swift">Maruti Suzuki Swift (Hatchback)</option>
-                  <option value="Maruti Suzuki Dzire">Maruti Suzuki Dzire (Sedan)</option>
-                  <option value="Toyota Innova Crysta">Toyota Innova Crysta (Premium MUV)</option>
-                  <option value="Force Tempo Traveller">Force Tempo Traveller (Group Travel)</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="passengers">Passengers</label>
-                <select id="passengers" name="passengers">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6+</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="time">Pickup time</label>
-                <input id="time" name="time" type="time" />
-              </div>
-              <div class="field field--full">
-                <label for="notes">Additional details <span class="label-note">(optional)</span></label>
-                <textarea id="notes" name="notes" rows="3" placeholder="Return journey, luggage, or anything else"></textarea>
-              </div>
-            </div>
-            <button class="btn btn--full" id="submitBtn" type="submit" disabled>Send Details to WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg></button>
-            <p class="form-hint">Submitting opens WhatsApp chat with your filled details. Fare and trip confirmation will be messaged in WhatsApp. Read the <a href="privacy.html">privacy notice</a>.</p>
-            <noscript><p class="form-hint">JavaScript is required to prepare the WhatsApp message. Please call <a href="tel:+919159154525">91591 54525</a> instead.</p></noscript>
-            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-          </form>
+          <div class="contact-cta-card">
+            <span class="icon-box icon-box--yellow" aria-hidden="true"><svg class="icon"><use href="#i-whatsapp" /></svg></span>
+            <h3>Ready to book a taxi?</h3>
+            <p>Tell us where you need to go. Click below to open the booking form and connect directly on WhatsApp with your travel details.</p>
+            <button type="button" class="btn btn--full" id="openBookingFormBtn">Book a Taxi Now <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+            <small>24/7 service · Instant confirmation on WhatsApp</small>
+          </div>
         </div>
       </div>
     </section>
@@ -497,6 +419,101 @@
   <div class="mobile-bar" aria-label="Quick contact">
     <a class="mobile-bar-call" href="tel:+919159154525"><svg class="icon" aria-hidden="true"><use href="#i-phone" /></svg> Call now</a>
     <a class="mobile-bar-wa" id="mobileWa" href="https://wa.me/919159154525" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg> WhatsApp</a>
+  </div>
+
+  <div class="booking-modal" id="bookingModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="booking-modal-card">
+      <div class="booking-modal-head">
+        <div>
+          <h2 id="modalTitle">Book Your Ride</h2>
+          <p>Fill in your details to prepare a WhatsApp message.</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close booking form">&times;</button>
+      </div>
+      <div class="booking-modal-scroll">
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your name" required aria-describedby="nameError" />
+              <p class="field-error" id="nameError"></p>
+            </div>
+            <div class="field">
+              <label for="phone">Your phone number</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile number" required aria-describedby="phoneError" />
+              <p class="field-error" id="phoneError"></p>
+            </div>
+            <div class="field field--full">
+              <label for="pickup">Pickup location</label>
+              <input id="pickup" name="pickup" type="text" autocomplete="off" placeholder="Where should we pick you up?" required aria-describedby="pickupError" />
+              <p class="field-error" id="pickupError"></p>
+            </div>
+            <div class="field field--full">
+              <label for="drop">Destination</label>
+              <input id="drop" name="drop" type="text" autocomplete="off" placeholder="Where are you going?" required aria-describedby="dropError" />
+              <p class="field-error" id="dropError"></p>
+            </div>
+            <div class="field">
+              <label for="date">Travel date</label>
+              <input id="date" name="date" type="date" required aria-describedby="dateError" />
+              <p class="field-error" id="dateError"></p>
+            </div>
+            <div class="field" id="returnField" hidden>
+              <label for="returnDate">Return date</label>
+              <input id="returnDate" name="returnDate" type="date" aria-describedby="returnDateError" />
+              <p class="field-error" id="returnDateError"></p>
+            </div>
+            <div class="field">
+              <label for="trip">Trip type</label>
+              <select id="trip" name="trip" required aria-describedby="tripError">
+                <option value="">Choose trip type</option>
+                <option>Local trip</option>
+                <option>Outstation trip</option>
+                <option>One-way trip</option>
+                <option>Round trip</option>
+                <option>Airport transfer</option>
+                <option>One-day trip</option>
+                <option>Family / group trip</option>
+              </select>
+              <p class="field-error" id="tripError"></p>
+            </div>
+            <div class="field">
+              <label for="vehicle">Preferred vehicle <span class="label-note">(optional)</span></label>
+              <select id="vehicle" name="vehicle">
+                <option value="">Choose vehicle (optional)</option>
+                <option value="Maruti Suzuki Swift">Maruti Suzuki Swift (Hatchback)</option>
+                <option value="Maruti Suzuki Dzire">Maruti Suzuki Dzire (Sedan)</option>
+                <option value="Toyota Innova Crysta">Toyota Innova Crysta (Premium MUV)</option>
+                <option value="Force Tempo Traveller">Force Tempo Traveller (Group Travel)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="passengers">Passengers</label>
+              <select id="passengers" name="passengers">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="time">Pickup time</label>
+              <input id="time" name="time" type="time" />
+            </div>
+            <div class="field field--full">
+              <label for="notes">Additional details <span class="label-note">(optional)</span></label>
+              <textarea id="notes" name="notes" rows="3" placeholder="Return journey, luggage, or anything else"></textarea>
+            </div>
+          </div>
+          <button class="btn btn--full" id="submitBtn" type="submit" disabled>Send Details to WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg></button>
+          <p class="form-hint">Submitting opens WhatsApp chat with your filled details. Fare and trip confirmation will be messaged in WhatsApp. Read the <a href="privacy.html">privacy notice</a>.</p>
+          <noscript><p class="form-hint">JavaScript is required to prepare the WhatsApp message. Please call <a href="tel:+919159154525">91591 54525</a> instead.</p></noscript>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <script src="js/main.js" defer></script>

@@ -32,6 +32,26 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow-2) var(--navy);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #04132f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yellow-2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yellow);
 }
 
 body {
@@ -534,6 +554,9 @@ button {
 .hero-card img {
   display: block;
   width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: 19px;
 }
 
@@ -1338,6 +1361,188 @@ a.contact-item:hover {
   display: inline-flex;
 }
 
+/* Booking Modal & Slim Scroll */
+body.modal-open {
+  overflow: hidden;
+}
+
+.booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(4, 19, 47, 0.76);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.booking-modal[hidden] {
+  display: none;
+}
+
+.booking-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.booking-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  max-height: min(92vh, 820px);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 25px 70px rgba(7, 27, 67, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.booking-modal.is-active .booking-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.booking-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+}
+
+.booking-modal-head h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  color: var(--navy);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.booking-modal-head p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.modal-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--pale);
+  color: var(--navy);
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--line);
+  transform: rotate(90deg);
+}
+
+.booking-modal-scroll {
+  padding: 20px 24px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow-2) #eef3fb;
+}
+
+.booking-modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.booking-modal-scroll::-webkit-scrollbar-track {
+  background: #f0f4fa;
+  border-radius: 999px;
+}
+
+.booking-modal-scroll::-webkit-scrollbar-thumb {
+  background: var(--yellow-2);
+  border-radius: 999px;
+}
+
+.booking-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--yellow);
+}
+
+.booking-modal-scroll .booking-form {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Contact CTA Card */
+.contact-cta-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vw, 38px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.28);
+}
+
+.contact-cta-card .icon-box--yellow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--yellow);
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+.contact-cta-card h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.contact-cta-card p {
+  margin: 0 0 24px;
+  color: #c5d4ed;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+.contact-cta-card .btn {
+  margin-bottom: 12px;
+}
+
+.contact-cta-card small {
+  display: block;
+  color: #9ab4da;
+  font-size: 12px;
+}
+
 .site-footer {
   padding: 56px 0 26px;
   background: #04132f;
@@ -1731,6 +1936,25 @@ a.contact-item:hover {
   .feature-grid,
   .form-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .booking-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .booking-modal-card {
+    max-height: 92vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .booking-modal-head {
+    padding: 16px 18px 14px;
+  }
+
+  .booking-modal-scroll {
+    padding: 16px 18px 20px;
   }
 
   .field--full {
